@@ -1,0 +1,5 @@
+{
+  "name": "Pull Request Title Verifier",
+  "description": "Workflow template to verify PR titles against Ticket ID patterns",
+  "iconName": "loader"
+}

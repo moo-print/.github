@@ -1,0 +1,26 @@
+name: PR Title Check
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - edited
+
+jobs:
+  check-title:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR title
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          echo "PR Title: $PR_TITLE"
+
+          if [[ ! "$PR_TITLE" =~ ^[a-zA-Z]{3,4}-[0-9]+ ]]; then
+            echo "Title Failed"
+            exit 1
+          fi
+
+          echo "Title Passed"
